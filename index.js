@@ -3,7 +3,7 @@
 
 
 document.querySelector("#submit-btn").addEventListener("click", function () {
-    document.querySelector("#movies").innerHTML = "";
+    document.querySelector(".cards").innerHTML = "";
 
     let movie = document.querySelector("#search-field").value.toLowerCase();
 
@@ -34,8 +34,8 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                     let type = result.Type;
 
                     if (type == "movie" || type == "series") {
-                        let moviesDiv = document.querySelector("#movies");
-                        let cards = document.createElement("div")
+                        // let moviesDiv = document.querySelector("#movies");
+                        let cards = document.querySelector(".cards")
                         let cardDiv = document.createElement("div");
                         let movieImageBox = document.createElement("div")
                         let movieImage = document.createElement("div")
@@ -51,11 +51,11 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                         let topicGenre = document.createElement("p")
                         let genreSpan = document.createElement("span")
 
-                        moviesDiv.appendChild(cards);
+                        
                         cards.appendChild(cardDiv)
                         cardDiv.appendChild(movieImageBox)
-                        movieImageBox.appendChild(movieImage)
                         cardDiv.appendChild(movieDescription)
+                        movieImageBox.appendChild(movieImage)
                         movieDescription.appendChild(movieTitle)
                         movieDescription.appendChild(movieRate)
                         movieDescription.appendChild(moviePlot)
@@ -100,9 +100,8 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                   let metaScore = json.Metascore;
                   let rated = json.Rated;
                   
-                    // cardDiv.innerHTML = `<img alt='movie-image'src=${poster}/><h2>${title}, ${year}</h2><p>Genre: ${genre}/ Rated: ${rated}/ Duration: ${duration}</p><a href='${website}' target='_blank'></a><p>Plot: ${plot}</p><p>Starring: ${cast}</p><p>Director: ${director}</p><p>Imdb rating: ${rating} Votes: ${votes}</p><p>Metascore: ${metaScore}</p><p>${awards}</p>`
+                    cardDiv.innerHTML = `<img alt='movie-image'src=${poster}/><h2>${title}, ${year}</h2><p>Genre: ${genre}/ Rated: ${rated}/ Duration: ${duration}</p><a href='${website}' target='_blank'></a><p>Plot: ${plot}</p><p>Starring: ${cast}</p><p>Director: ${director}</p><p>Imdb rating: ${rating} Votes: ${votes}</p><p>Metascore: ${metaScore}</p><p>${awards}</p>`
 
-                    // cardDiv.innerHTML = `<h2>${title}, ${year}</h2><p>Genre: ${genre}/ Rated: ${rated}/ Duration: ${duration}</p><a href='${website}' target='_blank'><img alt='movie-image'src=${poster}/></a><p>Plot: ${plot}</p><p>Starring: ${cast}</p><p>Director: ${director}</p><p>Imdb rating: ${rating} Votes: ${votes}</p><p>Metascore: ${metaScore}</p><p>${awards}</p>`
                 });
 
 
