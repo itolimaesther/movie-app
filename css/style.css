@@ -87,6 +87,7 @@ body{
     overflow: hidden;  
     position: relative;
     max-width: 300px;
+    margin-bottom: 20px;
     /* box-shadow: var(--shadow) */
   }
   .card-image{
@@ -148,5 +149,26 @@ body{
 
 
 
+
+@media only screen and (max-width: 760px) {
+    .wrapper{
+        display: block;
+    }
+    .movies{
+        width: 100%;
+    }
+    .cards{
+        display: block;
+    }
+
+    .card{
+        width: 100%;
+    }
+    .movies, .nomination{
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
   
  
