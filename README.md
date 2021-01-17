@@ -1,1 +1,1 @@
-# shopify-challenge
+# movie-app
