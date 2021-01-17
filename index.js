@@ -16,7 +16,7 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
         alert("Please type a movie title");
       }else{
 
-          fetch(`http://www.omdbapi.com/?s=${movie}&apikey=${apiKey}`)
+          fetch(`https://www.omdbapi.com/?s=${movie}&apikey=${apiKey}`)
               .then(res => {
                   return res.json()
               }).then(data => {
@@ -34,7 +34,6 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                     let type = result.Type;
 
                     if (type == "movie" || type == "series") {
-                        // let moviesDiv = document.querySelector("#movies");
                         let cards = document.querySelector(".cards")
                         let cardDiv = document.createElement("div");
                         let movieImageBox = document.createElement("div")
@@ -82,12 +81,11 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                         rateIcon.classList.add("fas")
                         rateNumber.classList.add("rating")
 
-                        fetch(`http://www.omdbapi.com/?s=${title}&apikey=${apiKey}`).then(function(res) {
+                        fetch(`https://www.omdbapi.com/?s=${title}&apikey=${apiKey}`).then(function(res) {
                     return res.json();
                 }).catch(function(error) {
                     alert('Error:', error)
                 }).then(function(json) {
-                  //console.log(json);
                   let cast = json.Actors;
                   let director = json.Director;
                   let awards = json.Awards;
