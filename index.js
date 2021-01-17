@@ -2,7 +2,7 @@
 
 
 
-document.querySelector("#submit-btn").addEventListener("click", function () {
+document.querySelector("#submit-btn").addEventListener("click", () => {
     document.querySelector(".cards").innerHTML = "";
 
     let movie = document.querySelector("#search-field").value.toLowerCase();
@@ -20,7 +20,7 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
               .then(res => {
                   return res.json()
               }).then(data => {
-                  console.log(data)
+                //   console.log(data)
                 let searchOutput = data.Search;
                 if (data.res == "False") {
                   alert(data.Error);
@@ -33,28 +33,37 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                     let year = result.Year;
                     let type = result.Type;
 
+                    
+                    
                     if (type == "movie" || type == "series") {
-                        let cards = document.querySelector(".cards")
-                        let cardDiv = document.createElement("div");
-                        let movieImageBox = document.createElement("div")
-                        let movieImage = document.createElement("div")
-                        let movieDescription = document.createElement("div")
-                        let movieTitle = document.createElement("h2")
-                        let movieRate = document.createElement("p")
-                        let rateSpan = document.createElement("span")
-                        let rateIcon = document.createElement("i")
-                        let rateNumber = document.createElement("span")
-                        let moviePlot = document.createElement("p")
-                        let movieTopic = document.createElement("p")
-                        let typeSpan = document.createElement("span")
-                        let topicGenre = document.createElement("p")
-                        let genreSpan = document.createElement("span")
-
+                      
+                      let cards = document.querySelector(".cards")
+                      let normWrapper = document.querySelector(".nomination-wrapper")
+                      let normDivs = document.createElement("div")
+                      let normDiv = document.createElement("div")
+                      let cardDiv = document.createElement("div");
+                      let movieImageBox = document.createElement("div")
+                      let movieImage = document.createElement("div")
+                      let movieDescription = document.createElement("div")
+                      let movieTitle = document.createElement("h2")
+                      let movieRate = document.createElement("p")
+                      let rateSpan = document.createElement("span")
+                      let rateIcon = document.createElement("i")
+                      let rateNumber = document.createElement("span")
+                      let moviePlot = document.createElement("p")
+                      let movieTopic = document.createElement("p")
+                      let typeSpan = document.createElement("span")
+                      let topicGenre = document.createElement("p")
+                      let genreSpan = document.createElement("span")
+                      let nomBtn = document.createElement("button");
                         
                         cards.appendChild(cardDiv)
                         cardDiv.appendChild(movieImageBox)
-                        cardDiv.appendChild(movieDescription)
+                        normWrapper.appendChild(normDivs)
+                        normDivs.appendChild(normDiv)
                         movieImageBox.appendChild(movieImage)
+                        cardDiv.appendChild(movieDescription)
+                        cardDiv.appendChild(nomBtn)
                         movieDescription.appendChild(movieTitle)
                         movieDescription.appendChild(movieRate)
                         movieDescription.appendChild(moviePlot)
@@ -68,10 +77,12 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                         topicGenre.appendChild(genreSpan)
 
                         cards.classList.add( "cards")
-                        cardDiv.classList.add( "card");
+                        cardDiv.classList.add("card");
+                        normDivs.classList.add("nominations")
                         movieImageBox.classList.add( "card-image-box")
                         movieImage.classList.add( "card-image")
                         movieDescription.classList.add( "card-description")
+                        nomBtn.classList.add("nom-btn")
                         movieTitle.classList.add( "card-title")
                         movieRate.classList.add( "card-rating")
                         moviePlot.classList.add( "card-plot")
@@ -81,34 +92,33 @@ document.querySelector("#submit-btn").addEventListener("click", function () {
                         rateIcon.classList.add("fas")
                         rateNumber.classList.add("rating")
 
-                        fetch(`https://www.omdbapi.com/?s=${title}&apikey=${apiKey}`).then(function(res) {
-                    return res.json();
-                }).catch(function(error) {
-                    alert('Error:', error)
-                }).then(function(json) {
-                  let cast = json.Actors;
-                  let director = json.Director;
-                  let awards = json.Awards;
-                  let plot = json.Plot;
-                  let genre = json.Genre;
-                  let rating = json.imdbRating;
-                  let votes = json.imdbVotes;
-                  let duration = json.Runtime;
-                  let website = json.Website;  
-                  let metaScore = json.Metascore;
-                  let rated = json.Rated;
-                  
-                    cardDiv.innerHTML = `<img alt='movie-image'src=${poster}/><h2>${title}, ${year}</h2><p>Genre: ${genre}/ Rated: ${rated}/ Duration: ${duration}</p><a href='${website}' target='_blank'></a><p>Plot: ${plot}</p><p>Starring: ${cast}</p><p>Director: ${director}</p><p>Imdb rating: ${rating} Votes: ${votes}</p><p>Metascore: ${metaScore}</p><p>${awards}</p>`
-
-                });
+                        movieImage.innerHTML = `<img alt='movie-image'src=${poster}/>`
+                        movieDescription.innerHTML = `<h2>${title}, ${year}</h2>`
+                        nomBtn.innerText = "Nominate"
 
 
-                        // innerDiv.setAttribute("class", "movieNames");
+                        document.querySelector(".nom-btn").addEventListener("click", () => {
+                          console.log(cardDiv.value)
+                          let deleteBtn = document.createElement("button")
+                          // normDivs.innerHTML = `<div> <p>${title}</p>${deleteBtn}</div>`
+                        let nomName = document.createElement("p")
+
+                        normWrapper.appendChild(nomName)
+                        // nomName.appendChild(deleteBtn)
+                        deleteBtn.innerText = "Delete"
+                        normDiv.innerHTML=`<p>${title}</p>`
+
+                          console.log("hello")
+                        })
+
                     }
                     else{
                       console.log(`There is also a ${type} with the name: ${title}`);
                       document.querySelector("#search-field").value = "";
                     }
+
+                    
+                    
                 })
               })
               

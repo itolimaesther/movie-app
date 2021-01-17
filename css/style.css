@@ -42,6 +42,14 @@ body{
     font: 400;
   }
 
+  .nom-btn{
+    float: right;
+    margin: 8px;
+    font-weight: 400;
+    background-color: #1677b5;
+    color: #fff;
+  }
+
   .wrapper{
     margin: 0 auto;
     width: 100%;
@@ -52,7 +60,7 @@ body{
     align-self: center;
   }
 
-  .movies, .nomination{
+  .movies, .nomination-wrapper{
       background-color: #fff !important;
       border-radius: 5px;
       position: absolute;
@@ -66,11 +74,16 @@ body{
     height: auto;
   }
 
-  .nomination{
+  .nomination-wrapper{
       width: 20%;
       height: 50%;
       left: 79%
   }
+
+  .nominations{
+    padding: 15px;
+  }
+
   .cards{
     display: flex;
     margin: 20px;
@@ -88,6 +101,7 @@ body{
     position: relative;
     max-width: 300px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
     /* box-shadow: var(--shadow) */
   }
   .card-image{
