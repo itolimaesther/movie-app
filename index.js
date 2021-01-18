@@ -1,10 +1,8 @@
 
-
-
-
 document.querySelector("#submit-btn").addEventListener("click", () => {
     document.querySelector(".cards").innerHTML = "";
 
+    // Add movie in the search box
     let movie = document.querySelector("#search-field").value.toLowerCase();
 
     console.log('User choose ', movie);
@@ -26,7 +24,7 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                   alert(data.Error);
                   document.querySelector("#search-field").value = "";
                 }
-
+                // get
                 searchOutput.forEach(result =>{
                     let title = result.Title;
                     let poster = result.Poster;
@@ -36,7 +34,6 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                     
                     
                     let cards = document.querySelector(".cards")
-                    let normWrapper = document.querySelector(".nomination-wrapper")
                     let normDivs = document.querySelector(".nominations")
                     let normDiv = document.createElement("div")
                     let cardDiv = document.createElement("div");
@@ -55,9 +52,9 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                     let genreSpan = document.createElement("span")
                     let nomBtn = document.createElement("button");
 
+                    // check if search matches the type/series of the movie
                     if (type == "movie" || type == "series") {
-                      
-                        
+  
                         cards.appendChild(cardDiv)
                         cardDiv.appendChild(movieImageBox)
                         normDivs.appendChild(normDiv)
@@ -86,15 +83,9 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                         nomBtn.classList.add("nom-btn")
                         movieTitle.classList.add( "card-title")
 
-                        // movieRate.classList.add( "card-rating")
-                        // moviePlot.classList.add( "card-plot")
-                        // typeSpan.classList.add( "topic")
-                        // genreSpan.classList.add("topic")
-                        // rateSpan.classList.add("topic")
-                        // rateIcon.classList.add("fas")
-                        // rateNumber.classList.add("rating")
-
+                        // add movie image to the image element
                         movieImage.innerHTML = `<img alt='movie-image'src=${poster}/>`
+                        // add title and year
                         movieDescription.innerHTML = `<h2>${title}, ${year}</h2>`
                         nomBtn.innerText = "Nominate"
                       }
@@ -106,25 +97,7 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                       let deleteBtn = document.createElement("button")
                       let nomName = document.createElement("p")
 
-                      // function nominate(e){
-
-                      //   let btnParent = e.target.parentNode
-                      //   btnParent.appendChild(movieTitle)
-
-
-                      //   normDiv.appendChild(nomName)
-                      //   normDiv.appendChild(deleteBtn)
-
-                      //   nomName.innerText = `${title}`
-                      //   deleteBtn.innerText = "Delete"
-
-                      // }
-
-                      // function deleteNomination(e){
-                      //   let btnParent = e.target.parentNode
-                      //   btnParent.removeChild(movieTitle)
-                      // }
-
+                      // Add new movie to the nomination list
                       nomBtn.addEventListener("click", (e) => {
                         
                         normDiv.appendChild(nomName)
@@ -135,14 +108,22 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
                         deleteBtn.style.backgroundColor = "red"
 
                         nomBtn.style.backgroundColor="grey"
+
+                        // save nominations
+                        localStorage.setItem(`${title}`, title)
+                        
+                        let normlist = normDivs.querySelector(".nomination")
+                        if(normlist.length > 5){
+                          console.log("hello")
+                        }
                       })
 
+                      // delete nominated movie
                       deleteBtn.addEventListener("click", (e)=>{
                         deleteBtn.parentNode.remove(this.parentNode);
+                        nomBtn.style.backgroundColor="#1677b5"
                       })
 
-                      
-                    
                     
                 })
               })

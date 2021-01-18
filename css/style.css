@@ -72,12 +72,17 @@ body{
   .movies{
     width: 75%;
     height: auto;
+    padding: 5px;
   }
 
   .nomination-wrapper{
       width: 20%;
       height: auto;
       left: 79%
+  }
+
+  .nomination-wrapper h2{
+    padding: 5px;
   }
 
   .nominations{
