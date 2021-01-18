@@ -76,12 +76,20 @@ body{
 
   .nomination-wrapper{
       width: 20%;
-      height: 50%;
+      height: auto;
       left: 79%
   }
 
   .nominations{
     padding: 15px;
+  }
+
+  .nomination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
   }
 
   .cards{
