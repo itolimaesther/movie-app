@@ -183,18 +183,24 @@ body{
     }
     .movies{
         width: 100%;
+        padding: 0;
     }
     .cards{
         display: block;
     }
 
     .card{
-        width: 100%;
+      width: 100%;
+      margin: 0 auto;
+      margin-bottom: 12px;
     }
-    .movies, .nomination{
-        position: relative;
-        top: 0;
-        left: 0;
+    .movies, .nomination-wrapper{
+      position: relative ;
+      left: 0;
+    }
+    .nomination-wrapper{
+      width: 100%;
+      margin: 0 auto;
     }
 }
   
